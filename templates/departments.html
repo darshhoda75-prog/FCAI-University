@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Departments | UnivShare{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to <span class="highlight">FCAI University</span></h1>
+       <p>Your platform for the Faculty of Computers and Artificial Intelligence – 
+        easily find and download course materials uploaded by your professors.</p>
+    </div>
+</section>
+
+<section class="subjects-section container">
+    <div class="section-header">
+        <h2>Departments</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="subjects-grid">
+        {% for name, icon in departments.items() %}
+        <a href="{{ url_for('subjects', department=name) }}" class="subject-card">
+            <div class="card-icon">
+                <i class="fa-solid {{ icon }}"></i>
+            </div>
+            <div class="card-content">
+                <h3>{{ name }}</h3>
+                <p>View Subjects &rarr;</p>
+            </div>
+            <div class="card-hover-effect"></div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

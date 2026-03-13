@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subject }} | UnivShare{% endblock %}
+
+{% block content %}
+<div class="page-header container">
+    <a href="{{ url_for('subjects', department=department) }}" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Subjects</a>
+    <div class="subject-title-wrapper">
+        <div class="subject-title-icon">
+            <i class="fa-solid {{ icon }}"></i>
+        </div>
+        <h1>{{ subject }}</h1>
+    </div>
+    <p class="subtitle">Available study materials, lecture notes, and resources.</p>
+</div>
+
+<section class="files-section container">
+    {% if files %}
+    <div class="files-grid">
+        {% for file in files %}
+        <div class="file-card">
+            <div class="file-info">
+                <div class="file-icon">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="file-details">
+                    <h4 class="file-name" title="{{ file.original_filename }}">{{ file.original_filename }}</h4>
+                    <span class="file-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        {{ file.upload_date.split('.')[0] if '.' in file.upload_date else file.upload_date }}
+                    </span>
+                </div>
+            </div>
+            <a href="{{ url_for('download', file_id=file.id) }}" class="btn btn-download">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <div class="empty-icon"><i class="fa-regular fa-folder-open"></i></div>
+        <h3>No files found</h3>
+        <p>There are currently no files uploaded for this subject yet.</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

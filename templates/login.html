@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor Login | UnivShare{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="auth-icon">
+                <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <h2>Doctor Portal</h2>
+            <p>Login to manage course materials</p>
+        </div>
+
+        <form method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="email" name="email" placeholder="doctor@univ.edu" required
+                        autocomplete="email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p><i class="fa-solid fa-circle-info"></i> For testing, use <b>doctor@univ.edu</b> / <b>password123</b></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

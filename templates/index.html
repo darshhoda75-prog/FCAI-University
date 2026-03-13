@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | UnivShare{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to <span class="highlight">FCAI University</span></h1>
+       <p>Your platform for the Faculty of Computers and Artificial Intelligence – 
+        easily find and download course materials uploaded by your professors.</p>
+    </div>
+</section>
+
+<section class="subjects-section container">
+    <div class="page-header" style="text-align: left; margin-bottom: 2rem;">
+        <a href="{{ url_for('index') }}" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Departments</a>
+    </div>
+    <div class="section-header">
+        <h2>{{ department }} Subjects</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="subjects-grid">
+        {% for name, icon in subjects.items() %}
+        <a href="{{ url_for('subject', department=department, name=name) }}" class="subject-card">
+            <div class="card-icon">
+                <i class="fa-solid {{ icon }}"></i>
+            </div>
+            <div class="card-content">
+                <h3>{{ name }}</h3>
+                <p>View Materials &rarr;</p>
+            </div>
+            <div class="card-hover-effect"></div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
